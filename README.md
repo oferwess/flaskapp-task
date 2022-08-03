@@ -1,20 +1,10 @@
-# Kovrr DevOps HW
-
-## Introduction
-Hi!
-Firstly, thank you for taking the time to complete this assignment!
-
-This document describes high level tasks, similar to what you may be asked to do at kovrr. 
-The goal is to illustrate the expected technical demands from a junior DevOps engineer.
-
-The task may require you to do some reading and learning. Nevertheless, if there is a question or you need more clarity, don't hesitate to contact us.
+# Flask App task
 
 ## Deliverables
 
 - Please perform your work on this repository.
 - Please include detailed instructions pertaining to how we should run your solution (can be in the readme or a separate txt file).
 - Documentation as described in the guidelines below.
-- Please notify us (Khen, Arnon or Lotem) when you are finished.
 
 ## Prerequisites
 
@@ -44,4 +34,3 @@ If possible, try to implement the features below
 - Please follow the used technology's best practices and guidelines
 - Please document challenges and materials that were used during the execution of this task
 - Keep the commit log clean and readable and make sure each feature (task step) is committed separately (you can use branching, squashing rebasing or any other git trick)
-- Contact ronm@kovrr.com with any questions.
