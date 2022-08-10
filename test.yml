@@ -1,0 +1,23 @@
+---
+- name: Test-Playbook
+  hosts: all
+  remote_user: centos
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: Log into DockerHub
+    docker_login:
+      username: "{{ lookup('ansible.builtin.env', 'DOCKER_HUB_USERNAME') }}"
+      password: "{{ lookup('ansible.builtin.env', 'DOCKER_HUB_PASSWORD') }}"
+
+  - name: build container image
+    docker_image:
+      build:
+        dockerfile: dockerfile 
+        path: /flaskapp
+      state: present
+      source: build
+      name: oferwess/flaskapp
+      tag: v1.0
+      push: yes
+    
