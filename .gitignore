@@ -1,2 +1,14 @@
 
 gitignore/*
+terrafom/.terraform.lock.hcl
+terrafom/.terraform/providers/registry.terraform.io/hashicorp/aws/3.75.2/linux_amd64/terraform-provider-aws_v3.75.2_x5
+terrafom/.terraform/providers/registry.terraform.io/hashicorp/local/2.2.3/linux_amd64/terraform-provider-local_v2.2.3_x5
+terrafom/.terraform/providers/registry.terraform.io/hashicorp/tls/4.0.1/linux_amd64/terraform-provider-tls_v4.0.1_x5
+tf/.terraform/providers/registry.terraform.io/hashicorp/aws/3.75.2/linux_amd64/terraform-provider-aws_v3.75.2_x5
+tf/.terraform/providers/registry.terraform.io/hashicorp/local/2.2.3/linux_amd64/terraform-provider-local_v2.2.3_x5
+tf/.terraform/providers/registry.terraform.io/hashicorp/tls/4.0.1/linux_amd64/terraform-provider-tls_v4.0.1_x5
+tf/.terraform.lock.hcl
+tf/terraform.tfstate.backup
+tf/terraform.tfstate
+terrafom/terraform.tfstate
+terrafom/terraform.tfstate.backup

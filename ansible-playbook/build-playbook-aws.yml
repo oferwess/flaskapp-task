@@ -4,7 +4,7 @@
   remote_user: centos
   gather_facts: yes
   vars:
-   user: "{{ ansible_env.USER }}"
+   current_user: "{{ ansible_env.USER }}"
   become: yes
   tasks:
 
@@ -17,7 +17,13 @@
         builder_cache: yes
       ignore_errors: yes
 
-    - name: Uninstall old docker, git, pyhon and pip packages
+    - name: Uninstall docker pip python package
+      ansible.builtin.pip:
+        name: docker
+        state: absent
+      ignore_errors: yes
+
+    - name: Uninstall docker, git, pyhon
       ansible.builtin.dnf:
         name:
           - docker-ce
@@ -28,11 +34,11 @@
           - python3-pip
         state: absent
       ignore_errors: yes
-
-    - name: Uninstall docker pip python package
-      ansible.builtin.pip:
-        name: docker
-        state: absent
+      
+    - name: Deleting /var/lib/docker
+      shell: rm -rf /var/lib/docker
+      args:
+        warn: no
       ignore_errors: yes
 
     - name: Set up docker repository
@@ -60,15 +66,14 @@
 
     - name: Add the current user to the docker group
       user:
-        name: "{{ user }}"
+        name: "{{ current_user }}"
         groups: docker
         append: yes
 
     - name: Start and enable docker
-      systemd:
-        name: docker
-        state: started
-        enabled: yes
+      shell: |
+        sudo systemctl start docker
+        sudo systemctl enable docker 
 
     - name: create git repo directory
       file:
@@ -87,6 +92,7 @@
       docker_login:
         username: "{{ lookup('ansible.builtin.env', 'DOCKER_HUB_USERNAME') }}"
         password: "{{ lookup('ansible.builtin.env', 'DOCKER_HUB_PASSWORD') }}"
+      retries: 3
 
     - name: build container image
       docker_image:
